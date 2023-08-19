@@ -4,17 +4,21 @@ const path = require('path');
 const mongoose = require('mongoose');
 const React = require('react');
 
-// const PORT = 3000;
+const PORT = 3000;
 
-// const app = express();
+const app = express();
 
-// const mongoURI =
+const mongoURI = 'mongodb+srv://ahui:hello@budget.0gzymv4.mongodb.net/?retryWrites=true&w=majority';
 
-// mongoose.connect(mongoURI);
+mongoose.connect(mongoURI);
 
-// app.use(express.json());
-// app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 // app.use(cookieParser());
+
+app.get('/', (req, res)=>{
+    res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+  })
 
 //404 ErrorHandler
 // app.use('*', (req,res) => {
@@ -33,4 +37,4 @@ const React = require('react');
 //     return res.status(errObj.status).json(errObj.message);
 // });
 
-// app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
