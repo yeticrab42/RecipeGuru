@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Card from './Card';
 
 // fetch('')
 // .then
@@ -29,17 +30,22 @@ fetch(url, options).then((response) => {
 });
 */
 
-const Home = () => {
+const Home = (props) => {
     const [ingredients, setIngredients] = useState('');
+    // const [image, setImage] = useState([]);
+    // const [title, setTitle] = useState([]);
+    const [resultArr, setArr] = useState([]);
+    //const [usedIngredients, setUsedIngredients] = useState(['','','','','']);
+    // const [isShown, setIsShown] = useState('false');
+    // const [outputresult, setOutput] = useState([]);
 
+
+    // setImage([])
     const sportsChoice = async () => {
-      //console.log(36, e.target.value)
-      console.log('37', ingredients);
       const str = ingredients.replaceAll(',','%2C')
-      console.log(39, str)
       // convert 'hello,hi,world' to 'hellow%2Chi%2Cworld'
 
-const url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=cheese%2Ctomato&number=5&ignorePantry=true&ranking=1'
+const url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=c'+str+'&number=5&ignorePantry=true&ranking=1'
 const options = {
 	method: 'GET',
 	headers: {
@@ -47,18 +53,70 @@ const options = {
 		'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
 	}
 };
+// declare an array const to store upcoming data from ingredients api
 
 try {
 	const response = await fetch(url, options);
 	const result = await response.json();
+    setArr([...result]);
+
+  // const arr =[], arr2=[]
+  // const cardsArr =[]
+  // for (let i = 0; i < result.length; i++){
+    // setImage(result[i].image)
+    // setTitle(result[i].title)
+    // setUsedIngredients(result[i].usedIngredients)
+    // cardsArr.push(<Card id={`card${i}`} image={result[i].image} title={result[i].title}/>)
+    // imageArr.push(result[i].image)
+    
+    // arr.push(result[i].image)
+    // arr2.push(result[i].title)
+
+  // }
+  // setImage([...arr]);
+  // setTitle([...arr2])
+  // setArr([...cardsArr])
 	console.log(result);
+  // console.log(setOutput(...arr))
+  
 } catch (error) {
 	console.error(error);
 }
-    }
-    // sportsChoice = menu.value
+  
+  
 
+//   const feedItem = urls.map((url, i) => {
+//     //unique key={`item-${i}`}
+//     return <FeedItem className="img" key={`item-${i}`} src={url} />;
+//   });
+//   //create a div with the id of feed and pass in the tempArr
+//   return (
+//     <div id="feed" style={styles.container}>
+//       {feedItem}
+//     </div>
+//   );
+// };
+  
+
+  
+    //console.log('outside', outputresult)
+    //setIsShown('true')
+}
+    // sportsChoice = menu.value
     
+  // useEffect(()=> {
+  //   console.log('inside useEffect')
+  //   // setIsShown('')
+  // },[ingredients])
+  let outputresult = [];
+
+  outputresult = resultArr.map( (el, i) => {
+    const arr =[]
+    for(let i = 0; i < el.usedIngredients.length; i++){
+      arr.push(el.usedIngredients[i].original)
+    }
+    return <Card key={`card${resultArr.indexOf(el)}`} image={el.image} title={el.title} usedIngredients={arr}/>;
+  })
     return (
         <div>
             <h1>Home</h1>
@@ -66,6 +124,15 @@ try {
              <p>Make sure to separate your ingredients with a comma.</p>
              <input type="text" id="ingredients" name="ingredients" onChange={(e) => setIngredients(e.target.value)}></input>
              <input type="submit" name="generateRecipes" onClick={sportsChoice}></input>
+
+           {/* <card> title={title} original={orignal} <card/> */}
+           {/* <Card image={image[0]} title={title[0]}/>
+           <Card image={image[1]} title={title[1]}/>
+           <Card image={image[2]} title={title[2]}/>
+           <Card image={image[3]} title={title[3]}/>
+           <Card image={image[4]} title={title[4]}/> */}
+            
+           {outputresult}
         </div>   
     )
 }
