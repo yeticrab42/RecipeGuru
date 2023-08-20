@@ -1,7 +1,7 @@
 import React, { BrowserRouter, Routes, Route } from 'react';
 import { Outlet, Link } from "react-router-dom";
-import Home from './Home';
-import Sports from './Sports';
+// import Home from './Home';
+// import Favorites from './Favorites';
 
 const NavBar = () => {
     return (
@@ -9,13 +9,13 @@ const NavBar = () => {
       <nav>
         <ul>
           
-            <label htmlFor="bankroll">Bankroll:</label>
+            {/* <label htmlFor="bankroll">Bankroll:</label> */}
           
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/sports">Sports</Link>
+            <Link to="/favorites">Favorites</Link>
           </li>
           {/* <li>
             <Link to="/contact">Contact</Link>

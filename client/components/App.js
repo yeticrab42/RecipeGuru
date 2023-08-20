@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import NavBar from './NavBar';
-import Sports from './Sports';
+//import Sports from './Favorites';
 import Home from './Home';
+import Favorites from './Favorites';
 
 
 // const NavBar = () => {
@@ -33,7 +34,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
-          <Route path="sports" element={<Sports />} />
+          <Route path="favorites" element={<Favorites />} />
           {/* <Route path="blogs" element={<Blogs />} /> */}
           {/* <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}
