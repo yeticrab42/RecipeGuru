@@ -1,26 +1,15 @@
-import React, { useState } from "react";
-import Card from './Card';
+import React, { useState, useEffect } from "react";
+import FavCard from './FavCard';
 
 const Favorites = () => {
     const [resultArr, setArr] = useState([]);
 
-    const mealSearch = async () => {
-        const str = ingredients.replaceAll(',','%2C')
-        
-        let backendUrl; //endpoint of the expressfile
-
-        try {
-            const response = await fetch(backendUrl);
-            const result = await response.json(); //parsing from json file
-            setArr([...result]);
-  
-            console.log(result);
     
-        } catch (error) {
-            console.error(error);
-        }
-   
-    }
+    useEffect(() => {
+        fetch('/getFavorite').then(data => data.json()).then(data => {
+            console.log(data)
+            setArr(data)})
+    }, []);
 
     let outputresult = [];
     outputresult = resultArr.map( (el) => {
@@ -33,7 +22,7 @@ const Favorites = () => {
         for(let i = 0; i < el.missedIngredients.length; i++){
           arr2.push(el.missedIngredients[i])
         }
-        return <Card key={`card${resultArr.indexOf(el)}`} image={el.image} title={el.title} usedIngredients={arr} missedIngredients={arr2}/>;
+        return <FavCard key={`card${resultArr.indexOf(el)}`} image={el.image} title={el.title} usedIngredients={arr} missedIngredients={arr2}/>;
       })
 
     return (
