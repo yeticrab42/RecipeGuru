@@ -13,6 +13,11 @@ body {
   border-color: black;
 }
 
+#login{
+  flex: display;
+  justify-content: center;
+}
+
 .result {
   // background-color: blue;
   display: grid;

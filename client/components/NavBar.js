@@ -9,15 +9,17 @@ const NavBar = () => {
       <nav id='navigation'>
         <ul>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to="/Welcome">Home</Link>
           </li>
           <li>
-            <Link to='/recipes'>Find Recipes By Ingredients</Link>
+            <Link to="/Welcome/recipes">Recipes by Ingredients</Link>
           </li>
           <li>
-            <Link to='/favorites'>My Favorites</Link>
+            <Link to="/Welcome/favorites">Favorites</Link>
           </li>
+          
         </ul>
+        <Link to="/">Logout</Link>
       </nav>
 
       <Outlet />

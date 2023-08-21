@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = 3000;
@@ -19,7 +19,11 @@ mongoose.connection.once('open', () => {
 
 app.use(express.json());
 // app.use(express.urlencoded({extended:true}));
-// app.use(cookieParser());
+app.use(cookieParser());
+
+app.post('/api/login', userController.verifyUser, userController.setSSIDCookie, (req, res) => {
+  return res.status(200).json(res.locals.verified);
+})
 
 app.post('/addUser', userController.addUser, (req, res) => {
   return res.status(200).send('created user');

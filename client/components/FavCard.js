@@ -34,7 +34,7 @@ const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
     } catch (error) {
       console.error(error);
     }
-    navigate('/favorites');
+    navigate('/Welcome/favorites');
   };
 
   return (
