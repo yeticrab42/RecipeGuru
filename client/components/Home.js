@@ -5,7 +5,7 @@ const Home = (props) => {
     <div>
       <h1>Home</h1>
       <div id='shack'>
-        <img src='https://i.imgur.com/jSNHu1K.png'></img>
+        <img id='crabshack' src='https://i.imgur.com/jSNHu1K.png'></img>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
   });
 
   const removeFromFavorite = async () => {
-    navigate('favorites');
+    navigate('home');
     console.log('clicked button');
 
     const options = {
