@@ -5,6 +5,7 @@ import Home from './Home';
 import Favorites from './Favorites';
 import Login from './Login';
 import WoNavBar from './WoNavBar';
+import Recipes from './Recipes'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       </Route>
       <Route path="/Welcome" element={<NavBar />}> 
           <Route index element={<Home />} />
+          <Route path="recipes" element={<Recipes />} />
           <Route path="favorites" element={<Favorites />} />
           {/* <Route path="blogs" element={<Blogs />} /> */}
           {/* <Route path="contact" element={<Contact />} />
@@ -21,6 +23,6 @@ const App = () => {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;
