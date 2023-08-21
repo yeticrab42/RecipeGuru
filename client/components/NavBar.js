@@ -1,32 +1,28 @@
 import React, { BrowserRouter, Routes, Route } from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link } from 'react-router-dom';
 // import Home from './Home';
 // import Favorites from './Favorites';
 
 const NavBar = () => {
-    return (
-      <>
+  return (
+    <>
       <nav>
         <ul>
-          
-            {/* <label htmlFor="bankroll">Bankroll:</label> */}
-          
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/favorites">Favorites</Link>
+            <Link to="/recipes">Find Recipes By Ingredients</Link>
           </li>
-          {/* <li>
-            <Link to="/contact">Contact</Link>
-          </li> */}
+          <li>
+            <Link to="/favorites">My Favorites</Link>
+          </li>
         </ul>
       </nav>
 
       <Outlet />
-      </>
-    )
-  
-}
+    </>
+  );
+};
 
 export default NavBar;
