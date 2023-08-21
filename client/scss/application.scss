@@ -61,10 +61,24 @@ body {
 }
 
 .image {
-  width: fit-content;
+  flex-grow: 1 1 0;
+  width: 100%;
+  border-radius: 25px;
+  // width: fit-content;
 }
 
 #title {
   font-size: 25px;
   font-weight: bold;
+}
+
+#navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#shack {
+  display: flex;
+  justify-content: center;
 }

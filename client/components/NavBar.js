@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <>
       <nav>
-        <ul>
+        <div>
           <li>
             <Link to='/'>Home</Link>
           </li>
@@ -17,7 +17,7 @@ const NavBar = () => {
           <li>
             <Link to='/favorites'>My Favorites</Link>
           </li>
-        </ul>
+        </div>
       </nav>
 
       <Outlet />

@@ -37,7 +37,7 @@ const Favorites = () => {
   });
 
   return (
-    <div>
+    <div className='home'>
       <h1>List of Favorite Recipes</h1>
       <p>
         {' '}
@@ -45,7 +45,7 @@ const Favorites = () => {
         Favorites" in the navigation bar again to get an updated list of
         favorites.
       </p>
-      {outputresult}
+      <div className='result'>{outputresult}</div>
     </div>
   );
 };
