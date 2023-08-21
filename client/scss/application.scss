@@ -1,0 +1,70 @@
+body {
+  background-image: linear-gradient(#dda15e, #bc6c25);
+}
+
+.home {
+  // display: flex;
+  // flex-direction: column;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  // display: grid;
+  // grid-template: auto/ repeat(2, 1fr);
+  // place-items: center;
+  // grid-template-areas:
+  //   '1'
+  //   'result result';
+  // // flex-basis: auto;
+  // // padding:
+  margin: auto;
+  margin-bottom: 0px;
+  padding: 25px;
+  background-color: white;
+  width: 80%;
+  border-radius: 25px; //rounding the corners
+  // row-gap: 2%;
+}
+
+.result {
+  // background-color: blue;
+  display: grid;
+  width: 100%;
+  // height: 110%;
+  padding: 10px;
+  // height: auto;
+  align-items: space-evenly;
+  //minmax((maximumpixels),(eachcard))
+  // grid-template-rows: 50vh 50vh 50vh;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  row-gap: 3%;
+  // background: blue;
+}
+
+.recipeCards {
+  box-shadow: 10px 5px 5px #f4a259;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid;
+  margin: auto;
+  width: 75%;
+  height: 100%;
+  padding: 10px;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+
+#submit {
+  display: flex;
+  border-color: #f4a259;
+  border-radius: 25px;
+  justify-content: left;
+}
+
+.image {
+  width: fit-content;
+}
+
+#title {
+  font-size: 25px;
+  font-weight: bold;
+}
