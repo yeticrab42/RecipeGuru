@@ -10,16 +10,15 @@ import Recipes from './Recipes'
 const App = () => {
   return (
     <Routes>
+      {/* Initial route for log-in Login.js will navigate to secondary route*/}
       <Route path="/" element={<WoNavBar />}>
           <Route index element={<Login />} />
       </Route>
+      {/* Secondary route(NavBar file has the links to Home.js/Recipes.js/favorites.js) */}
       <Route path="/Welcome" element={<NavBar />}> 
           <Route index element={<Home />} />
           <Route path="recipes" element={<Recipes />} />
           <Route path="favorites" element={<Favorites />} />
-          {/* <Route path="blogs" element={<Blogs />} /> */}
-          {/* <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
       </Route>
     </Routes>
   );

@@ -4,15 +4,17 @@ import { useNavigate } from "react-router-dom";
 const User = require('../../server/models/userModel.js');
 
 
-
+//usernames: user1, user2, user3
+//passwords: password (for all three users)
 const Login = () => {
     const navigate = useNavigate();
 
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
+  const [authenticated, setauthenticated] = useState(false);
 
   const handleSubmit = (e) => {
+    //preventDefault = prevents default behavior of refreshing page after password is entered
     e.preventDefault()
     
     const options = {
@@ -27,16 +29,14 @@ const Login = () => {
       };
       try {
         fetch('/api/login', options).then(response => {return response.json()}).then(data => {
-          console.log(data)
           if (data === true) {
             setauthenticated(true)
-            localStorage.setItem("authenticated", true);
+            // localStorage.setItem("authenticated", true);
             // react navigate to /Home
             navigate("/Welcome");
         }
         })
-        // const response = await fetch('/api/login', options)
-        // const data = response.json()
+
       } catch (error) {
         console.error(error);
     }
@@ -45,9 +45,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div id = "login">
       <p>Welcome. Please login to continue.</p>
-      <form id = "login" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
       <input
         placeholder="username"
         type="text"

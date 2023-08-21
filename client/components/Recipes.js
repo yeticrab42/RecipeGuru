@@ -6,9 +6,11 @@ const Recipes = (props) => {
   const [resultArr, setArr] = useState([]);
 
   const mealSearch = async () => {
+    //str will take the user's input and change it into the correct format for the url
     const str = ingredients.replaceAll(',', '%2C');
 
     const url =
+    //str in added into the correct place in the url for the appro
       'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=c' +
       str +
       '&number=9&ignorePantry=true&ranking=1';
@@ -44,6 +46,7 @@ const Recipes = (props) => {
       arr2.push(el.missedIngredients[i].original);
     }
     return (
+      //Card component
       <Card
         key={`card${resultArr.indexOf(el)}`}
         image={el.image}
