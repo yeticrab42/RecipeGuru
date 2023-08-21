@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
@@ -16,9 +15,9 @@ mongoose.connect(
 mongoose.connection.once('open', () => {
   console.log('Connected to Database');
 });
-
+//parsing any json data
 app.use(express.json());
-// app.use(express.urlencoded({extended:true}));
+//parsing cookies
 app.use(cookieParser());
 
 app.post('/api/login', userController.verifyUser, userController.setSSIDCookie, (req, res) => {
@@ -30,11 +29,11 @@ app.post('/addUser', userController.addUser, (req, res) => {
 });
 
 app.post('/addFavorite', favoritesController.addFavorite, (req, res) => {
-  return res.status(200).send('added to user1 favorite');
+  return res.status(200).send('added to user favorite');
 });
 
 app.post('/removeFavorite', userController.removeFavorite, (req, res) => {
-  return res.status(200).send('removed from user1 favorite');
+  return res.status(200).send('removed from user favorite');
 });
 
 app.get('/getFavorite', favoritesController.getFavorite, (req, res) => {

@@ -3,6 +3,7 @@ import React from 'react';
 const Card = ({ image, title, usedIngredients, missedIngredients }) => {
   let arr = [],
     arr2 = [];
+    //API returned used & missed ingredients and as array
   usedIngredients.forEach((el) => {
     arr.push(<li key={el}>{el}</li>);
   });
@@ -24,17 +25,14 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
         missedIngredients,
       }),
     };
-    console.log(options);
     try {
       const response = await fetch('/addFavorite', options);
-      // const result = await response.json();
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    // <div style={styles.container}>
     <div className='recipeCards'>
       <img className='image' src={image}></img>
       <p id='title'>{title}</p>
@@ -53,16 +51,5 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
     </div>
   );
 };
-
-// const styles = {
-//   container: {
-//     // display: 'flex',
-//     // wrap: 'wrap',
-//     border: '1px solid black',
-//     // height: '50%',
-//     // width: '50%',
-//   },
-//   body: {},
-// };
 
 export default Card;

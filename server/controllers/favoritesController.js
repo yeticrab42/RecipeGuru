@@ -6,7 +6,6 @@ const favoritesController = {};
 favoritesController.addFavorite = async (req, res, next) => {
   console.log('inside favoritesController.addFavorite');
   const { image, title, usedIngredients, missedIngredients } = req.body;
-  console.log(image, title, usedIngredients, missedIngredients);
 
   const {ssid} = req.cookies
 
@@ -27,14 +26,11 @@ favoritesController.addFavorite = async (req, res, next) => {
       });
     }
     await newFavorite.save();
-    // console.log(newFavorite);
 
     const foundUser = await User.findOne({ _id: ssid });
 
     foundUser.favorited.push(newFavorite);
     foundUser.save();
-
-    console.log(foundUser);
 
     return next();
   } catch (error) {
@@ -44,13 +40,13 @@ favoritesController.addFavorite = async (req, res, next) => {
 
 favoritesController.getFavorite = async (req, res, next) => {
   console.log('inside favoritesController.getFavorite');
-  console.log(req.cookies)
   const {ssid} = req.cookies
   try {
     const foundUser = await User.findOne({ _id: ssid });
     const arr = [];
 
     foundUser.favorited.forEach((el) => {
+      //Favorites is the favorite schema
       Favorites.findById(el).then((foundItem) => {
         const obj = {};
         obj.image = foundItem.image;
