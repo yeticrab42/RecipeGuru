@@ -8,17 +8,15 @@ const NavBar = () => {
     <>
       <nav>
         <ul>
-          {/* <label htmlFor="bankroll">Bankroll:</label> */}
-
           <li>
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/favorites'>Favorites</Link>
+            <Link to='/recipes'>Find Recipes By Ingredients</Link>
           </li>
-          {/* <li>
-            <Link to="/contact">Contact</Link>
-          </li> */}
+          <li>
+            <Link to='/favorites'>My Favorites</Link>
+          </li>
         </ul>
       </nav>
 

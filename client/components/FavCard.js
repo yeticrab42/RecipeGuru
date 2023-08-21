@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Card = ({ image, title, usedIngredients, missedIngredients }) => {
+const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
   let arr = [],
     arr2 = [];
   usedIngredients.forEach((el) => {
@@ -10,7 +10,7 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
     arr2.push(<li key={el}>{el}</li>);
   });
 
-  const addToFavorite = async () => {
+  const removeFromFavorite = async () => {
     console.log('clicked button');
     const options = {
       method: 'POST',
@@ -24,9 +24,8 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
         missedIngredients,
       }),
     };
-    console.log(options);
     try {
-      const response = await fetch('/addFavorite', options);
+      const response = await fetch('/removeFavorite', options);
       // const result = await response.json();
     } catch (error) {
       console.error(error);
@@ -42,10 +41,10 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
       <p>Missed ingredients:</p>
       <ul>{arr2}</ul>
       <input
-        type='submit'
-        name='addToFavorites'
-        value='Add To Favorites'
-        onClick={addToFavorite}
+        type="submit"
+        name="removeFromFavorites"
+        value="Remove from Favorites"
+        onClick={removeFromFavorite}
       ></input>
       <br />
     </div>
@@ -63,4 +62,4 @@ const styles = {
   body: {},
 };
 
-export default Card;
+export default FavCard;
