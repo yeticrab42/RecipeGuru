@@ -64,6 +64,8 @@ const Login = () => {
       />
       <input id="submit" type="submit" value="Log In" />
       </form>
+      <p>Here's a picture of Ye-Tea while you log in.</p>
+      <img id='crabshack' src='https://i.imgur.com/Wv0CGmr.png'></img>
     </div>
   )
 };

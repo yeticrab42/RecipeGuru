@@ -8,9 +8,10 @@ const Favorites = () => {
     fetch('/getFavorite')
       .then((data) => data.json())
       .then((data) => {
-        console.log(data);
+        //setArr is a setterfunction, only way to update state
         setArr(data);
       });
+      //[] dependency runs once upon initial render
   }, []);
 
   let outputresult = [];
@@ -18,7 +19,6 @@ const Favorites = () => {
     const arr = [],
       arr2 = [];
 
-    //lines 9-14 can be different, but it will still be passed down this way
     for (let i = 0; i < el.usedIngredients.length; i++) {
       arr.push(el.usedIngredients[i]);
     }
@@ -37,6 +37,7 @@ const Favorites = () => {
   });
 
   return (
+    //renders to page
     <div className='home'>
       <h1>List of Favorite Recipes</h1>
       <p> See all your favorited recipes here!</p>

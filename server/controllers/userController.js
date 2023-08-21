@@ -52,8 +52,9 @@ userController.removeFavorite = async (req, res, next) => {
 userController.verifyUser = (req, res, next) => {
 
   try {
+    //find method return the data as an array
     User.find({ username: req.body.username }).then((data) => {
-
+      //because the username is unique, we grab the first element of data
       if (req.body.password === data[0].password) {
         res.locals.id = data[0]._id.toString();
         res.locals.verified = true;

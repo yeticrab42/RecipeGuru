@@ -10,7 +10,7 @@ const Recipes = (props) => {
     const str = ingredients.replaceAll(',', '%2C');
 
     const url =
-    //str in added into the correct place in the url for the appro
+    //str in added into the correct place in the url for the approiate url for the search
       'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=c' +
       str +
       '&number=9&ignorePantry=true&ranking=1';
@@ -24,6 +24,7 @@ const Recipes = (props) => {
     };
 
     try {
+      //fetch request to the API
       const response = await fetch(url, options);
       const result = await response.json();
       setArr([...result]);
