@@ -26,11 +26,8 @@ app.post('/addUser', userController.addUser, (req, res) => {
 });
 
 app.post('/addFavorite', favoritesController.addFavorite, (req, res) => {
+  console.log('post request to /addFavorite');
   return res.status(200).send('added to user1 favorite');
-});
-
-app.post('/removeFavorite', userController.removeFavorite, (req, res) => {
-  return res.status(200).send('removed from user1 favorite');
 });
 
 app.get('/getFavorite', favoritesController.getFavorite, (req, res) => {

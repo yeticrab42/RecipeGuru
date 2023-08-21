@@ -9,25 +9,21 @@ favoritesController.addFavorite = async (req, res, next) => {
   console.log(image, title, usedIngredients, missedIngredients);
 
   try {
-    let newFavorite = await Favorites.findOne({
+    const newFavorite = await Favorites.create({
       image,
       title,
       usedIngredients,
       missedIngredients,
     });
-
-    if (!newFavorite) {
-      newFavorite = await Favorites.create({
-        image,
-        title,
-        usedIngredients,
-        missedIngredients,
-      });
-    }
     await newFavorite.save();
-    // console.log(newFavorite);
+    console.log(newFavorite);
 
     const foundUser = await User.findOne({ username: 'user1' });
+    //   .populate(newFavorite)
+    // console.log('between creating documents');
+    console.log(foundUser);
+    // newFavorite.favoriters.push(foundUser);
+    // newFavorite.save();
 
     foundUser.favorited.push(newFavorite);
     foundUser.save();
@@ -40,28 +36,29 @@ favoritesController.addFavorite = async (req, res, next) => {
   }
 };
 
+
 favoritesController.getFavorite = async (req, res, next) => {
-  console.log('inside favoritesController.getFavorite');
+  console.log("inside favoritesController.getFavorite")
   try {
-    const foundUser = await User.findOne({ username: 'user1' });
-    const arr = [];
-
-    foundUser.favorited.forEach((el) => {
+    const foundUser = await User.findOne({username: 'user1'})
+    const arr = []
+    
+    foundUser.favorited.forEach(el => {
       Favorites.findById(el).then((foundItem) => {
-        const obj = {};
-        obj.image = foundItem.image;
-        obj.title = foundItem.title;
-        obj.usedIngredients = foundItem.usedIngredients;
-        obj.missedIngredients = foundItem.missedIngredients;
-        arr.push(obj);
-
-        res.locals.favorited = [...arr];
-        if (arr.length === foundUser.favorited.length) return next();
-      });
-    });
-  } catch (error) {
-    return next(error);
+        const obj = {}
+        obj.image = foundItem.image
+        obj.title=foundItem.title
+        obj.usedIngredients = foundItem.usedIngredients
+        obj.missedIngredients=foundItem.missedIngredients
+        arr.push(obj)
+    
+        res.locals.favorited = [...arr]
+        if(arr.length===foundUser.favorited.length) return next()
+     })
+    })
+  } catch (error){
+    return next(error)
   }
-};
+}
 
 module.exports = favoritesController;
