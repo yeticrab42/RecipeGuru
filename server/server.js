@@ -21,6 +21,10 @@ app.use(express.json());
 // app.use(express.urlencoded({extended:true}));
 // app.use(cookieParser());
 
+app.post('/api/login', userController.verifyUser, cookieController.setSSIDCookie, (req, res) => {
+  return res.status(200).json(res.locals.verified);
+})
+
 app.post('/addUser', userController.addUser, (req, res) => {
   return res.status(200).send('created user');
 });

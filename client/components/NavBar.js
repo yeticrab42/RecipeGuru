@@ -12,10 +12,10 @@ const NavBar = () => {
             {/* <label htmlFor="bankroll">Bankroll:</label> */}
           
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/Welcome">Home</Link>
           </li>
           <li>
-            <Link to="/favorites">Favorites</Link>
+            <Link to="/Welcome/favorites">Favorites</Link>
           </li>
           {/* <li>
             <Link to="/contact">Contact</Link>
