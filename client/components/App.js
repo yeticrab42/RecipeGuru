@@ -1,18 +1,24 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import React from 'react'
+import { Routes, Route} from 'react-router-dom';
 import NavBar from './NavBar';
-import Recipes from './Recipes';
 import Home from './Home';
 import Favorites from './Favorites';
+import Login from './Login';
+import WoNavBar from './WoNavBar';
+import Recipes from './Recipes'
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<NavBar />}>
-        <Route index element={<Home />} />
-        <Route path="recipes" element={<Recipes />} />
-        <Route path="favorites" element={<Favorites />} />
-        {/* <Route path="contact" element={<Contact />} />
+      <Route path="/" element={<WoNavBar />}>
+          <Route index element={<Login />} />
+      </Route>
+      <Route path="/Welcome" element={<NavBar />}> 
+          <Route index element={<Home />} />
+          <Route path="recipes" element={<Recipes />} />
+          <Route path="favorites" element={<Favorites />} />
+          {/* <Route path="blogs" element={<Blogs />} /> */}
+          {/* <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}
       </Route>
     </Routes>

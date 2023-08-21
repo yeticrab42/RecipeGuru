@@ -11,7 +11,7 @@ const Recipes = (props) => {
     const url =
       'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=c' +
       str +
-      '&number=10&ignorePantry=true&ranking=1';
+      '&number=9&ignorePantry=true&ranking=1';
     const options = {
       method: 'GET',
       headers: {
@@ -54,19 +54,24 @@ const Recipes = (props) => {
     );
   });
   return (
-    <div>
-      <h1>Home</h1>
-      <label htmlFor="menu">Type in your ingredients:</label>
+    <div class='home'>
+      <h1>Find Recipes</h1>
+      <label htmlFor='menu'>Type in your ingredients:</label>
       <p>Make sure to separate your ingredients with a comma.</p>
       <input
-        type="text"
-        id="ingredients"
-        name="ingredients"
+        type='text'
+        id='submit'
+        name='ingredients'
         onChange={(e) => setIngredients(e.target.value)}
       ></input>
-      <input type="submit" name="generateRecipes" onClick={mealSearch}></input>
+      <input
+        id='submit'
+        type='submit'
+        name='generateRecipes'
+        onClick={mealSearch}
+      ></input>
 
-      {outputresult}
+      <div class='result'>{outputresult}</div>
     </div>
   );
 };

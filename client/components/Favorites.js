@@ -37,15 +37,10 @@ const Favorites = () => {
   });
 
   return (
-    <div>
+    <div className='home'>
       <h1>List of Favorite Recipes</h1>
-      <p>
-        {' '}
-        Once you click "Remove from Favorites," navigate away then click on "My
-        Favorites" in the navigation bar again to get an updated list of
-        favorites.
-      </p>
-      {outputresult}
+      <p> See all your favorited recipes here!</p>
+      <div className='result'>{outputresult}</div>
     </div>
   );
 };

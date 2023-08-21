@@ -8,6 +8,8 @@ favoritesController.addFavorite = async (req, res, next) => {
   const { image, title, usedIngredients, missedIngredients } = req.body;
   console.log(image, title, usedIngredients, missedIngredients);
 
+  const {ssid} = req.cookies
+
   try {
     let newFavorite = await Favorites.findOne({
       image,
@@ -27,7 +29,7 @@ favoritesController.addFavorite = async (req, res, next) => {
     await newFavorite.save();
     // console.log(newFavorite);
 
-    const foundUser = await User.findOne({ username: 'user1' });
+    const foundUser = await User.findOne({ _id: ssid });
 
     foundUser.favorited.push(newFavorite);
     foundUser.save();
@@ -42,8 +44,10 @@ favoritesController.addFavorite = async (req, res, next) => {
 
 favoritesController.getFavorite = async (req, res, next) => {
   console.log('inside favoritesController.getFavorite');
+  console.log(req.cookies)
+  const {ssid} = req.cookies
   try {
-    const foundUser = await User.findOne({ username: 'user1' });
+    const foundUser = await User.findOne({ _id: ssid });
     const arr = [];
 
     foundUser.favorited.forEach((el) => {
