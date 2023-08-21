@@ -8,10 +8,10 @@ import Favorites from './Favorites';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<NavBar />}>
+      <Route path='/' element={<NavBar />}>
         <Route index element={<Home />} />
-        <Route path="recipes" element={<Recipes />} />
-        <Route path="favorites" element={<Favorites />} />
+        <Route path='recipes' element={<Recipes />} />
+        <Route path='favorites' element={<Favorites />} />
         {/* <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}
       </Route>

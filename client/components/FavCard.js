@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
+  const navigate = useNavigate();
   let arr = [],
     arr2 = [];
   usedIngredients.forEach((el) => {
@@ -11,7 +13,9 @@ const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
   });
 
   const removeFromFavorite = async () => {
+    navigate('home');
     console.log('clicked button');
+
     const options = {
       method: 'POST',
       headers: {
@@ -30,20 +34,22 @@ const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
     } catch (error) {
       console.error(error);
     }
+    navigate('/favorites');
   };
 
   return (
-    <div style={styles.container}>
-      <img src={image}></img>
-      <p>{title}</p>
+    <div className='recipeCards'>
+      <img src={image} className='image'></img>
+      <p id='title'>{title}</p>
       <p>Used ingredients:</p>
       <ul>{arr}</ul>
       <p>Missed ingredients:</p>
       <ul>{arr2}</ul>
       <input
-        type="submit"
-        name="removeFromFavorites"
-        value="Remove from Favorites"
+        id='submit'
+        type='submit'
+        name='removeFromFavorites'
+        value='Remove from Favorites'
         onClick={removeFromFavorite}
       ></input>
       <br />
@@ -51,15 +57,15 @@ const FavCard = ({ image, title, usedIngredients, missedIngredients }) => {
   );
 };
 
-const styles = {
-  container: {
-    // display: 'flex',
-    // wrap: 'wrap',
-    border: '1px solid black',
-    // height: '50%',
-    // width: '50%',
-  },
-  body: {},
-};
+// const styles = {
+//   container: {
+//     // display: 'flex',
+//     // wrap: 'wrap',
+//     border: '1px solid black',
+//     // height: '50%',
+//     // width: '50%',
+//   },
+//   body: {},
+// };
 
 export default FavCard;

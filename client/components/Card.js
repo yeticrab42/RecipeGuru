@@ -34,17 +34,19 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
   };
 
   return (
-    <div style={styles.container}>
-      <img src={image}></img>
-      <p>{title}</p>
+    // <div style={styles.container}>
+    <div className='recipeCards'>
+      <img className='image' src={image}></img>
+      <p id='title'>{title}</p>
       <p>Used ingredients:</p>
       <ul>{arr}</ul>
       <p>Missed ingredients:</p>
       <ul>{arr2}</ul>
       <input
-        type="submit"
-        name="addToFavorites"
-        value="Add To Favorites"
+        id='submit'
+        type='submit'
+        name='addToFavorites'
+        value='Add To Favorites'
         onClick={addToFavorite}
       ></input>
       <br />
@@ -52,15 +54,15 @@ const Card = ({ image, title, usedIngredients, missedIngredients }) => {
   );
 };
 
-const styles = {
-  container: {
-    // display: 'flex',
-    // wrap: 'wrap',
-    border: '1px solid black',
-    // height: '50%',
-    // width: '50%',
-  },
-  body: {},
-};
+// const styles = {
+//   container: {
+//     // display: 'flex',
+//     // wrap: 'wrap',
+//     border: '1px solid black',
+//     // height: '50%',
+//     // width: '50%',
+//   },
+//   body: {},
+// };
 
 export default Card;
