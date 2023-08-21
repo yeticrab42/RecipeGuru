@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Card = ({ image, title, usedIngredients, missedIngredients }) => {
-  console.log(image, title, usedIngredients, missedIngredients);
   let arr = [],
     arr2 = [];
   usedIngredients.forEach((el) => {

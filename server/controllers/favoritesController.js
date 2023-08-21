@@ -36,4 +36,29 @@ favoritesController.addFavorite = async (req, res, next) => {
   }
 };
 
+
+favoritesController.getFavorite = async (req, res, next) => {
+  console.log("inside favoritesController.getFavorite")
+  try {
+    const foundUser = await User.findOne({username: 'user1'})
+    const arr = []
+    
+    foundUser.favorited.forEach(el => {
+      Favorites.findById(el).then((foundItem) => {
+        const obj = {}
+        obj.image = foundItem.image
+        obj.title=foundItem.title
+        obj.usedIngredients = foundItem.usedIngredients
+        obj.missedIngredients=foundItem.missedIngredients
+        arr.push(obj)
+    
+        res.locals.favorited = [...arr]
+        if(arr.length===foundUser.favorited.length) return next()
+     })
+    })
+  } catch (error){
+    return next(error)
+  }
+}
+
 module.exports = favoritesController;

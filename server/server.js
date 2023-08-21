@@ -30,6 +30,10 @@ app.post('/addFavorite', favoritesController.addFavorite, (req, res) => {
   return res.status(200).send('added to user1 favorite');
 });
 
+app.get('/getFavorite', favoritesController.getFavorite, (req, res) => {
+  return res.status(200).json(res.locals.favorited);
+});
+
 //404 ErrorHandler
 app.use('*', (req, res) => {
   res.status(404).send('Not Found');

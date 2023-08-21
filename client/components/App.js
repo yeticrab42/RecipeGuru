@@ -32,8 +32,8 @@ import Favorites from './Favorites';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<NavBar />}>
-          <Route index element={<Home />} />
+      <Route path="/" element={<NavBar />}> 
+          <Route index element={<Home />} /> 
           <Route path="favorites" element={<Favorites />} />
           {/* <Route path="blogs" element={<Blogs />} /> */}
           {/* <Route path="contact" element={<Contact />} />
