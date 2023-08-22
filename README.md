@@ -1,8 +1,9 @@
 # scratch_project
 
 ## Problem/Solution
-Utilizing leftover ingredients, return recipes with these leftover ingredients
-Features:
+Utilizing leftover ingredients, returning recipes with these leftover ingredients
+
+## Features:
 * Log-in Page with authentication from database and cookie setting
 * API calls to grab data
 * Favorites button to add recipe to database
